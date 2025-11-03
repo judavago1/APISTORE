@@ -6,8 +6,10 @@ export default function Header({ titulo }: { titulo?: string }) {
       style={{
         backgroundColor: "#007bff",
         color: "white",
-        textAlign: "center",
-        padding: "15px 0",
+        display: "grid",
+        gridTemplateColumns: "1fr auto 1fr",
+        alignItems: "center",
+        padding: "15px 20px",
         borderBottomLeftRadius: "15px",
         borderBottomRightRadius: "15px",
         boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)",
@@ -18,10 +20,32 @@ export default function Header({ titulo }: { titulo?: string }) {
         zIndex: 1000,
       }}
     >
-      <h1 style={{ margin: 0, fontSize: "22px", fontWeight: "bold" }}>ApiStore</h1>
-      <h2 style={{ margin: "5px 0 0", fontSize: "18px", fontWeight: "normal" }}>
-        {titulo || "Catálogo"}
-      </h2>
+      {/* Columna vacía para mantener el título centrado */}
+      <div></div>
+
+      {/* Título centrado */}
+      <div style={{ textAlign: "center" }}>
+        <h1 style={{ margin: 0, fontSize: "22px", fontWeight: "bold" }}>
+          ApiStore
+        </h1>
+        <h2 style={{ margin: "5px 0 0", fontSize: "18px", fontWeight: "normal" }}>
+          {titulo || "Catálogo"}
+        </h2>
+      </div>
+
+      {/* Info de contacto a la derecha */}
+      <div
+        style={{
+          textAlign: "right",
+          fontSize: "12px",
+          lineHeight: "1.4",
+          paddingRight: "40px", // <-- corregido aquí
+        }}
+      >
+        <strong>ApiStore</strong> <br />
+        📞 +57 304-341-2916 <br />
+        ✉️ apistore@gmail.com
+      </div>
     </header>
   );
 }
