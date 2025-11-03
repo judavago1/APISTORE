@@ -23,8 +23,8 @@ export default function Header({ titulo }: { titulo?: string }) {
       {/* Columna vacía para mantener el título centrado */}
       <div></div>
 
-      {/* Título centrado */}
-      <div style={{ textAlign: "center" }}>
+      {/* Título centrado pero ligeramente a la izquierda */}
+      <div style={{ textAlign: "center", marginLeft: "-80px" }}>
         <h1 style={{ margin: 0, fontSize: "22px", fontWeight: "bold" }}>
           ApiStore
         </h1>
@@ -33,13 +33,14 @@ export default function Header({ titulo }: { titulo?: string }) {
         </h2>
       </div>
 
-      {/* Info de contacto a la derecha */}
+      {/* Info de contacto a la derecha, con más espacio desde el borde */}
       <div
         style={{
           textAlign: "right",
           fontSize: "12px",
           lineHeight: "1.4",
-          paddingRight: "40px", // <-- corregido aquí
+          paddingRight: "30px",
+          marginLeft: "10px",
         }}
       >
         <strong>ApiStore</strong> <br />
