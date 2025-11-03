@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useCarrito } from "../context/CarritoContext";
+
 export default function Menu() {
   const { carrito } = useCarrito();
 

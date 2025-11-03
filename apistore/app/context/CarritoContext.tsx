@@ -1,12 +1,31 @@
 "use client";
 import { createContext, useContext, useState, ReactNode } from "react";
 
-const CarritoContext = createContext(null);
+// ✅ Definimos el tipo de producto
+type Producto = {
+  id: number;
+  title: string;
+  price: number;
+  image?: string;
+  category?: string;
+  description?: string;
+};
+
+// ✅ Definimos el tipo del contexto
+type CarritoContextType = {
+  carrito: Producto[];
+  agregarAlCarrito: (producto: Producto) => void;
+  eliminarDelCarrito: (id: number) => void;
+  total: number;
+};
+
+// ✅ Creamos el contexto tipado
+const CarritoContext = createContext<CarritoContextType | undefined>(undefined);
 
 export function CarritoProvider({ children }: { children: ReactNode }) {
-  const [carrito, setCarrito] = useState<any[]>([]);
+  const [carrito, setCarrito] = useState<Producto[]>([]);
 
-  const agregarAlCarrito = (producto: any) => {
+  const agregarAlCarrito = (producto: Producto) => {
     setCarrito((prev) => [...prev, producto]);
   };
 
@@ -25,6 +44,7 @@ export function CarritoProvider({ children }: { children: ReactNode }) {
   );
 }
 
+// ✅ Hook personalizado con verificación de contexto
 export const useCarrito = () => {
   const ctx = useContext(CarritoContext);
   if (!ctx) throw new Error("useCarrito debe usarse dentro de CarritoProvider");
